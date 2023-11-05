@@ -1,0 +1,12 @@
+
+/vendor/
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/codeception.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/phpspec.xml
+/.idea/phpunit.xml
+/.idea/vcs.xml
+/.idea/wonderwords-php.iml
+/.php-cs-fixer.cache

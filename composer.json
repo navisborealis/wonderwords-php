@@ -1,0 +1,40 @@
+{
+  "name": "navisborealis/wonderwords-php",
+  "description": "Generate random words and sentences with ease in PHP.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "adjective",
+    "noun",
+    "word",
+    "generator",
+    "phrase"
+  ],
+  "homepage": "https://github.com/navisborealis/wonderwords-php",
+  "require": {
+    "php": "^7.1 || ^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "NavisBorealis\\WonderwordsPhp\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NavisBorealis\\WonderwordsPhp\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Piotr Grabski-Gradziński",
+      "email": "piotr.gradzinski@navisborealis.io"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require-dev": {
+    "phpunit/phpunit": "^11.0@dev",
+    "phpstan/phpstan": "1.11.x-dev",
+    "php-coveralls/php-coveralls": "dev-master",
+    "friendsofphp/php-cs-fixer": "dev-master"
+  }
+}
