@@ -11,7 +11,7 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
-class Noun implements WordsInterface
+class Noun extends Words
 {
     public const DEFAULT_WORDS = [
         'aardvark',

@@ -11,7 +11,7 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
-class Adjective implements WordsInterface
+class Adjective extends Words
 {
     public const DEFAULT_WORDS = [
         'aback',
