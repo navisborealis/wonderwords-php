@@ -10,3 +10,5 @@
 /.idea/vcs.xml
 /.idea/wonderwords-php.iml
 /.php-cs-fixer.cache
+/.idea
+/.phpunit.result.cache

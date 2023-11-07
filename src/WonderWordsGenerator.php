@@ -13,7 +13,7 @@ namespace NavisBorealis\WonderwordsPhp;
 
 class WonderWordsGenerator
 {
-    public static function phrase(): string
+    public static function phrase(string $separator = ' ', int $numAdjectives = 1, int $numNouns = 1): string
     {
     }
 }

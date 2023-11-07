@@ -11,6 +11,8 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
+use NavisBorealis\WonderwordsPhp\Exceptions\EmptyWordsListException;
+
 abstract class Words
 {
     public static $words = [];
@@ -22,21 +24,26 @@ abstract class Words
      */
     public static function random(): string
     {
-        if (empty(self::$words)) {
-            self::setWordList(self::DEFAULT_WORDS);
+        if (empty(static::$words)) {
+            static::setWordList(static::DEFAULT_WORDS);
         }
 
-        return self::$words[array_rand(self::$words)];
+        return static::$words[array_rand(static::$words)];
     }
 
     /**
      * Set the possible words that can be returned.
      *
      * @param string[] $words
+     * @throws \NavisBorealis\WonderwordsPhp\Exceptions\EmptyWordsListException
      */
-    public static function setWordList(array $words = []): void
+    public static function setWordList(array $words): void
     {
-        self::$words = $words;
+        if (!$words) {
+            throw new EmptyWordsListException();
+        }
+
+        static::$words = $words;
     }
 
     /**
@@ -44,6 +51,6 @@ abstract class Words
      */
     public static function reset(): void
     {
-        self::setWordList(self::DEFAULT_WORDS);
+        static::setWordList(static::DEFAULT_WORDS);
     }
 }
