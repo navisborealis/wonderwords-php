@@ -1,9 +1,9 @@
 <?php
 
 $header = <<<'EOF'
-This file is part of Badcow Phrase Generator.
+This file is part of the WonderWordsPHP package.
 
-(c) Samuel Williams <sam@badcow.co>
+(c) Piotr Grabski-Gradziński <piotr.gradzinski@navisborealis.io>
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
@@ -14,7 +14,7 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__.'/tests')
 ;
 
-$config = PhpCsFixer\Config::create()
+$config = (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules(array(
         '@Symfony' => true,
