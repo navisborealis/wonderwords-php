@@ -1,3 +1,5 @@
+[![Github Tests Action Status](https://github.com/navisborealis/wonderwords-php/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/navisborealis/wonderwords-php/actions/workflows/unit-tests.yml)
+
 # Wonderwords PHP
 
 Generate random words and sentences with ease in PHP.

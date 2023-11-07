@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e0502ef54ed50dfb72a7249270576d9",
+    "content-hash": "b0036b4fff4ac9b1ed8d7ed639b1a69b",
     "packages": [],
     "packages-dev": [
         {
@@ -300,16 +300,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "dev-master",
+            "version": "v3.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "6af5f99a24dec235b518b159f177a7c90d4cf12f"
+                "reference": "7e6070026e76aa09d77a47519625c86593fb8e31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/6af5f99a24dec235b518b159f177a7c90d4cf12f",
-                "reference": "6af5f99a24dec235b518b159f177a7c90d4cf12f",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/7e6070026e76aa09d77a47519625c86593fb8e31",
+                "reference": "7e6070026e76aa09d77a47519625c86593fb8e31",
                 "shasum": ""
             },
             "require": {
@@ -349,7 +349,6 @@
                 "ext-dom": "For handling output formats in XML",
                 "ext-mbstring": "For handling non-UTF8 characters."
             },
-            "default-branch": true,
             "bin": [
                 "php-cs-fixer"
             ],
@@ -382,7 +381,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/master"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.38.0"
             },
             "funding": [
                 {
@@ -390,7 +389,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-07T11:28:07+00:00"
+            "time": "2023-11-07T08:44:54+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4356,9 +4355,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "phpstan/phpstan": 20,
-        "php-coveralls/php-coveralls": 20,
-        "friendsofphp/php-cs-fixer": 20
+        "php-coveralls/php-coveralls": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
