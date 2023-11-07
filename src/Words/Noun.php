@@ -13,6 +13,8 @@ namespace NavisBorealis\WonderwordsPhp\Words;
 
 class Noun extends Words
 {
+    public static $words;
+
     public const DEFAULT_WORDS = [
         'aardvark',
         'abacus',

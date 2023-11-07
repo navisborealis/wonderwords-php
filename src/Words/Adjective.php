@@ -13,6 +13,8 @@ namespace NavisBorealis\WonderwordsPhp\Words;
 
 class Adjective extends Words
 {
+    public static $words;
+
     public const DEFAULT_WORDS = [
         'aback',
         'abaft',

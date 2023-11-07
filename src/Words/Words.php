@@ -15,14 +15,14 @@ use NavisBorealis\WonderwordsPhp\Exceptions\EmptyWordsListException;
 
 abstract class Words
 {
-    public static $words = [];
-
     public const DEFAULT_WORDS = [];
+
+    public static $words;
 
     /**
      * Get a random word.
      */
-    public static function random(): string
+    public static function randomWord(): string
     {
         if (empty(static::$words)) {
             static::setWordList(static::DEFAULT_WORDS);
@@ -32,9 +32,34 @@ abstract class Words
     }
 
     /**
+     * Get a random word.
+     *
+     * @param int $num number of words
+     *
+     * @return array[string]
+     */
+    public static function randomWords(int $num = 1): array
+    {
+        if (empty(static::$words)) {
+            static::setWordList(static::DEFAULT_WORDS);
+        }
+
+        if ($num < 1) {
+            throw new \InvalidArgumentException('Number of words must be positive');
+        } elseif (1 == $num) {
+            return [static::randomWord()];
+        }
+
+        return array_map(function ($key) {
+            return static::$words[$key];
+        }, array_rand(static::$words, $num));
+    }
+
+    /**
      * Set the possible words that can be returned.
      *
      * @param string[] $words
+     *
      * @throws \NavisBorealis\WonderwordsPhp\Exceptions\EmptyWordsListException
      */
     public static function setWordList(array $words): void

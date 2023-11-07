@@ -3,33 +3,17 @@
 namespace NavisBorealis\WonderwordsPhp\Tests;
 
 use NavisBorealis\WonderwordsPhp\Exceptions\EmptyWordsListException;
-use NavisBorealis\WonderwordsPhp\Words\Adjective;
-use NavisBorealis\WonderwordsPhp\Words\Noun;
-use NavisBorealis\WonderwordsPhp\Words\Verb;
 use NavisBorealis\WonderwordsPhp\Words\Words;
-use PHPUnit\Framework\TestCase;
 
-class WordsTest extends TestCase
+class WordsTest extends BaseTestCase
 {
-    /**
-     * @throws \ReflectionException
-     */
-    public static function wordsClassProvider(): array
-    {
-        return [
-            [(new \ReflectionClass(Adjective::class))->newInstanceWithoutConstructor()],
-            [(new \ReflectionClass(Noun::class))->newInstanceWithoutConstructor()],
-            [(new \ReflectionClass(Verb::class))->newInstanceWithoutConstructor()],
-        ];
-    }
-
     /**
      * @dataProvider wordsClassProvider
      */
     public function testGetsRandomWord(Words $wordsInstance)
     {
-        $this->assertIsString($wordsInstance::random());
-        $this->assertTrue((bool) $wordsInstance::random());
+        $this->assertIsString($wordsInstance::randomWord());
+        $this->assertTrue((bool) $wordsInstance::randomWord());
     }
 
     /**
@@ -47,7 +31,7 @@ class WordsTest extends TestCase
     public function testSetWordList(Words $wordsInstance)
     {
         $wordsInstance::setWordList(['word']);
-        $this->assertEquals('word', $wordsInstance::random());
+        $this->assertEquals('word', $wordsInstance::randomWord());
     }
 
     /**
@@ -56,10 +40,31 @@ class WordsTest extends TestCase
     public function testResetWords(Words $wordsInstance)
     {
         $wordsInstance::setWordList(['asdqweasd']);
-        $this->assertEquals('asdqweasd', $wordsInstance::random());
+        $this->assertEquals('asdqweasd', $wordsInstance::randomWord());
 
         $wordsInstance::reset();
 
         $this->assertNotContains('asdqweasd', $wordsInstance::$words);
+    }
+
+    /**
+     * @dataProvider wordsClassProvider
+     */
+    public function testPositiveGettingRandomWords(Words $wordsInstance)
+    {
+        $words = $wordsInstance::randomWords();
+        $this->assertCount(1, $words);
+
+        $words = $wordsInstance::randomWords(5);
+        $this->assertCount(5, $words);
+    }
+
+    /**
+     * @dataProvider wordsClassProvider
+     */
+    public function testNegativeGettingRandomWords(Words $wordsInstance)
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $wordsInstance::randomWords(-5);
     }
 }

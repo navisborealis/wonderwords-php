@@ -13,6 +13,8 @@ namespace NavisBorealis\WonderwordsPhp\Words;
 
 class Verb extends Words
 {
+    public static $words;
+
     public const DEFAULT_WORDS = [
         'abide',
         'accelerate',
