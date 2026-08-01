@@ -13,6 +13,7 @@ namespace NavisBorealis\WonderwordsPhp\Tests;
 
 use NavisBorealis\WonderwordsPhp\Words\Adjective;
 use NavisBorealis\WonderwordsPhp\Words\Noun;
+use NavisBorealis\WonderwordsPhp\Words\Profanity;
 use NavisBorealis\WonderwordsPhp\Words\Verb;
 use PHPUnit\Framework\TestCase;
 
@@ -23,6 +24,7 @@ class BaseTestCase extends TestCase
         Adjective::reset();
         Noun::reset();
         Verb::reset();
+        Profanity::reset();
     }
 
     /**
@@ -34,6 +36,7 @@ class BaseTestCase extends TestCase
             [(new \ReflectionClass(Adjective::class))->newInstanceWithoutConstructor()],
             [(new \ReflectionClass(Noun::class))->newInstanceWithoutConstructor()],
             [(new \ReflectionClass(Verb::class))->newInstanceWithoutConstructor()],
+            [(new \ReflectionClass(Profanity::class))->newInstanceWithoutConstructor()],
         ];
     }
 }
