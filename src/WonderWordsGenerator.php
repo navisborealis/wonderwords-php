@@ -20,13 +20,13 @@ class WonderWordsGenerator
      * @param callable|null $stringCaseFunction function that accepts whole phrase and converts letters. By default,
      *                                          ucwords() will be used.
      *
-     * @see \NavisBorealis\WonderwordsPhp\StringCase
+     * @see StringCase
      */
     public static function phrase(
         string $separator = ' ',
         int $numAdjectives = 1,
         int $numNouns = 1,
-        callable $stringCaseFunction = null
+        ?callable $stringCaseFunction = null
     ): string {
         $words = array_merge(Adjective::randomWords($numAdjectives), Noun::randomWords($numNouns));
 

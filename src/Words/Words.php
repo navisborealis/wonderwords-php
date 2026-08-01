@@ -60,7 +60,7 @@ abstract class Words
      *
      * @param string[] $words
      *
-     * @throws \NavisBorealis\WonderwordsPhp\Exceptions\EmptyWordsListException
+     * @throws EmptyWordsListException
      */
     public static function setWordList(array $words): void
     {

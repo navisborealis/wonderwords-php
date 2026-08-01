@@ -20,6 +20,7 @@ $config = (new PhpCsFixer\Config())
         '@Symfony' => true,
         'header_comment' => array('header' => $header),
         'array_syntax' => array('syntax' => 'short'),
+        'trailing_comma_in_multiline' => array('elements' => array('arrays')),
     ))
     ->setFinder($finder)
 ;
