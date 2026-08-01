@@ -17,8 +17,16 @@ use NavisBorealis\WonderwordsPhp\Words\Noun;
 class WonderWordsGenerator
 {
     /**
-     * @param callable|null $stringCaseFunction function that accepts whole phrase and converts letters. By default,
-     *                                          ucwords() will be used.
+     * Generate a random phrase combining adjectives and nouns.
+     *
+     * @param string        $separator          separator between words
+     * @param int           $numAdjectives      number of adjectives to generate
+     * @param int           $numNouns           number of nouns to generate
+     * @param callable|null $stringCaseFunction Function that formats the phrase. Defaults to ucwords().
+     *
+     * @return string the generated phrase
+     *
+     * @throws \InvalidArgumentException if word counts are negative or zero
      *
      * @see StringCase
      */
@@ -31,7 +39,7 @@ class WonderWordsGenerator
         if ($numAdjectives < 0 || $numNouns < 0) {
             throw new \InvalidArgumentException('Number of adjectives and nouns must be non-negative');
         }
-        if ($numAdjectives === 0 && $numNouns === 0) {
+        if (0 === $numAdjectives && 0 === $numNouns) {
             throw new \InvalidArgumentException('At least one word must be generated');
         }
 

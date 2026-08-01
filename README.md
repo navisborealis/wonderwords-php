@@ -4,7 +4,7 @@
 
 # Wonderwords PHP
 
-Generate random words, phrases and sentences with ease in PHP.
+Generate random words, phrases, and sentences in PHP.
 
 ## Installation
 
@@ -15,19 +15,19 @@ composer require navisborealis/wonderwords-php
 
 ## Usage
 
-With this library you can generate:
+Generate:
 - words - adjectives, nouns or verbs
 - phrases - 1+ adjective and 1+ noun, like `Blushing Inspection`
 - sentences - this feature is still in development
 
 ### Phrases
 
-Basic structure of the phrase is `adjective noun`. You can change:
+The phrase structure is `adjective noun`. You can change:
 - string separator, default ` `,
 - number of adjectives and nouns, default `1`,
 - function used to modify the letters case, default `ucwords()`.
 
-To use your own list of words see [Changing default word list](#changing-default-word-list).
+To use custom words, see [Changing default word list](#changing-default-word-list).
 
 ```php
 phrase(
@@ -37,7 +37,7 @@ phrase(
         callable $stringCaseFunction = null)
 ```
 
-#### Generic, two word, space separated phrase 
+#### Two-word phrase 
 
 ```php
 use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
@@ -53,7 +53,7 @@ use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
 echo WonderWordsGenerator::phrase('-'); // Output: Blushing-Inspection
 ```
 
-#### Different number of adjectives and nouns
+#### Change adjective and noun count
 
 ```php
 use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
@@ -61,7 +61,7 @@ use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
 echo WonderWordsGenerator::phrase(' ', 2, 3); // Output: Receptive Weary Disease Motive Vegetarian
 ```
 
-#### Custom function to change letters casing
+#### Custom casing function
 
 ```php
 use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
@@ -81,7 +81,7 @@ echo WonderWordsGenerator::phrase(' ', 1, 1, function ($phrase) {
 
 #### Generating words
 
-From each category (`Adjective`, `Noun`, `Verb`) you can generate a single word:
+Generate one word per category (`Adjective`, `Noun`, `Verb`):
 
 ```php
 use NavisBorealis\WonderwordsPhp\Words\Adjective;
@@ -89,7 +89,7 @@ use NavisBorealis\WonderwordsPhp\Words\Adjective;
 echo Adjective::randomWord(); // Output: various
 ```
 
-or an array of words:
+Or generate multiple words:
 
 ```php
 use NavisBorealis\WonderwordsPhp\Words\Adjective;
@@ -99,7 +99,7 @@ $words = Adjective::randomWords(5); // ["innate", "noiseless", "screeching", "sl
 
 #### Changing default word list
 
-For each word category (`Adjective`, `Noun`, `Verb`) you can change the default word list:
+Change the default word list per category:
 
 ```php
 use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
@@ -109,7 +109,7 @@ Adjective::setWordList(['customadjective1', 'customadjective2']);
 
 echo WonderWordsGenerator::phrase(); // Output: Customadjective2 Inspection
 ```
-also, you can reset word list to its defaults:
+Reset the word list:
 
 ```php
 use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
@@ -124,14 +124,70 @@ Adjective::reset();
 echo WonderWordsGenerator::phrase(); // Output: Scientific Inspection
 ```
 
+#### Advanced Filtering
+
+Filter words by length, starting/ending letters, or regex. Pass an options array to `randomWord()` or `randomWords()`:
+
+```php
+use NavisBorealis\WonderwordsPhp\Words\Noun;
+
+// Generate a 5-letter noun starting with 'a' and ending with 'e'
+echo Noun::randomWord([
+    'starts_with' => 'a',
+    'ends_with' => 'e',
+    'word_min_length' => 5,
+    'word_max_length' => 5
+]); // Output: apple
+
+// Generate 3 words matching a custom regex
+$words = Noun::randomWords(3, [
+    'regex' => '/^b.*y$/'
+]); // Output: ["blueberry", "butterfly", "balcony"]
+```
+
 
 ### Sentences
 
-In development...
+Use `WonderWordsSentence` to generate sentences with random nouns and verbs.
+
+```php
+use NavisBorealis\WonderwordsPhp\WonderWordsSentence;
+
+// Example: "A dog eats an apple."
+echo WonderWordsSentence::simpleSentence(); 
+
+// Example: "The cat runs."
+echo WonderWordsSentence::bareBoneSentence();
+```
+
+You can also pass filtering options (just like `randomWord`) directly into sentence generators:
+
+```php
+// Generate a sentence where the nouns start with 'a' and the verb is exactly 3 letters long
+echo WonderWordsSentence::simpleSentence(
+    ['starts_with' => 'a'], 
+    ['word_min_length' => 3, 'word_max_length' => 3]
+);
+```
+
+### Profanity Filtering
+
+Check strings for profanity or filter out profane words from arrays:
+
+```php
+use NavisBorealis\WonderwordsPhp\Words\Profanity;
+
+// Check a specific string
+$isBad = Profanity::isProfanity("piss"); // true
+
+// Filter an array of words
+$cleanArray = Profanity::filterProfanity(['apple', 'orange', 'piss']);
+// Output: ['apple', 'orange']
+```
 
 ## Credits
 
-Wonderwords PHP is based on `wonderwordsmodule` python module and has been made possible thanks to the following works:
+Wonderwords PHP ports the Python `wonderwordsmodule` and uses these projects:
 
 - [`wonderwordsmodule` for python](https://github.com/mrmaxguns/wonderwordsmodule) under
   the [MIT License](https://github.com/mrmaxguns/wonderwordsmodule/blob/master/LICENSE)

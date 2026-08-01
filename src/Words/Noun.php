@@ -11,10 +11,21 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
+/**
+ * Class Noun.
+ *
+ * Provides a list of nouns for random word generation.
+ */
 class Noun extends Words
 {
+    /**
+     * @var string[] current list of nouns
+     */
     public static $words;
 
+    /**
+     * @var string[] Default list of nouns.
+     */
     public const DEFAULT_WORDS = [
         'aardvark',
         'abacus',

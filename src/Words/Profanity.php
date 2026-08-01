@@ -11,9 +11,47 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
+/**
+ * Class Profanity.
+ *
+ * Provides a list of profanities for filtering random words.
+ */
 class Profanity extends Words
 {
+    /**
+     * @var string[] current list of profanities
+     */
     public static $words;
+
+    /**
+     * Check if word exists in profanity list.
+     *
+     * @param string $word the word to check for profanity
+     *
+     * @return bool true if the word is found in the profanity list, false otherwise
+     */
+    public static function isProfanity(string $word): bool
+    {
+        if (empty(static::$words)) {
+            static::setWordList(static::DEFAULT_WORDS);
+        }
+
+        return in_array(strtolower(trim($word)), static::$words, true);
+    }
+
+    /**
+     * Remove profanity from array.
+     *
+     * @param string[] $words an array of words to filter
+     *
+     * @return string[] an array with profane words removed
+     */
+    public static function filterProfanity(array $words): array
+    {
+        return array_values(array_filter($words, function (string $word) {
+            return !static::isProfanity($word);
+        }));
+    }
 
     public const DEFAULT_WORDS = [
         '2 girls 1 cup',

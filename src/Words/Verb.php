@@ -11,10 +11,21 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
+/**
+ * Class Verb.
+ *
+ * Provides a list of verbs for random word generation.
+ */
 class Verb extends Words
 {
+    /**
+     * @var string[] current list of verbs
+     */
     public static $words;
 
+    /**
+     * @var string[] Default list of verbs.
+     */
     public const DEFAULT_WORDS = [
         'abide',
         'accelerate',

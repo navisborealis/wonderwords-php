@@ -11,10 +11,21 @@
 
 namespace NavisBorealis\WonderwordsPhp\Words;
 
+/**
+ * Class Adjective.
+ *
+ * Provides a list of adjectives for random word generation.
+ */
 class Adjective extends Words
 {
+    /**
+     * @var string[] current list of adjectives
+     */
     public static $words;
 
+    /**
+     * @var string[] Default list of adjectives.
+     */
     public const DEFAULT_WORDS = [
         'aback',
         'abaft',

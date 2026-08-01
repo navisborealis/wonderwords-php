@@ -86,4 +86,32 @@ class WordsTest extends BaseTestCase
         $this->expectException(\InvalidArgumentException::class);
         $wordsInstance::randomWords(3);
     }
+
+    /**
+     * @dataProvider wordsClassProvider
+     */
+    public function testFiltering(Words $wordsInstance)
+    {
+        $wordsInstance::setWordList(['apple', 'banana', 'apricot', 'cherry', 'blueberry']);
+
+        $this->assertStringStartsWith('a', $wordsInstance::randomWord(['starts_with' => 'a']));
+        $this->assertStringEndsWith('y', $wordsInstance::randomWord(['ends_with' => 'y']));
+
+        $word = $wordsInstance::randomWord(['word_min_length' => 7, 'word_max_length' => 9]);
+        $this->assertGreaterThanOrEqual(7, strlen($word));
+        $this->assertLessThanOrEqual(9, strlen($word));
+
+        $word = $wordsInstance::randomWord(['regex' => '/^b.*y$/']);
+        $this->assertEquals('blueberry', $word);
+    }
+
+    /**
+     * @dataProvider wordsClassProvider
+     */
+    public function testFilteringNoMatchThrowsException(Words $wordsInstance)
+    {
+        $wordsInstance::setWordList(['apple', 'banana']);
+        $this->expectException(\RuntimeException::class);
+        $wordsInstance::randomWord(['starts_with' => 'z']);
+    }
 }
