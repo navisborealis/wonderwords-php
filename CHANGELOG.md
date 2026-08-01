@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-08-01
+
+### Added
+- Added 5 new word dictionaries: `Adverb`, `Name`, `Animal`, `Color`, and `TechTerm`.
+- Added proxy methods to `WonderWordsGenerator` for easy access to new categories: `adverb()`, `firstName()`, `lastName()`, `name()`, `animal()`, `color()`, and `techTerm()`.
+- Upgraded `WonderWordsSentence` to generate richer sentences using Adjectives and Adverbs.
+- Added new keywords to `composer.json` for better discoverability.
+
+### Changed
+- **BREAKING (Behavior)**: `WonderWordsSentence::bareBoneSentence()` and `simpleSentence()` now include Adjectives and Adverbs by default, changing the total word count of the generated sentences.
+
 ## [1.1.2] - 2026-08-01
 
 ### Changed

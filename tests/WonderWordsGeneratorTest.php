@@ -14,6 +14,7 @@ namespace NavisBorealis\WonderwordsPhp\Tests;
 use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
 use NavisBorealis\WonderwordsPhp\Words\Adjective;
 use NavisBorealis\WonderwordsPhp\Words\Noun;
+use NavisBorealis\WonderwordsPhp\Words\Verb;
 
 class WonderWordsGeneratorTest extends BaseTestCase
 {
@@ -77,5 +78,31 @@ class WonderWordsGeneratorTest extends BaseTestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         WonderWordsGenerator::phrase(' ', -1, 1);
+    }
+
+    public function testProxyMethods()
+    {
+        \NavisBorealis\WonderwordsPhp\Words\Adverb::setWordList(['quickly']);
+        \NavisBorealis\WonderwordsPhp\Words\Animal::setWordList(['cat']);
+        \NavisBorealis\WonderwordsPhp\Words\Color::setWordList(['blue']);
+        \NavisBorealis\WonderwordsPhp\Words\Name::setWordList(['Alice']);
+        \NavisBorealis\WonderwordsPhp\Words\Profanity::setWordList(['badword']);
+        \NavisBorealis\WonderwordsPhp\Words\TechTerm::setWordList(['api']);
+        Noun::setWordList(['box']);
+        Verb::setWordList(['eat']);
+        Adjective::setWordList(['tall']);
+
+        $this->assertEquals('quickly', WonderWordsGenerator::adverb());
+        $this->assertEquals('cat', WonderWordsGenerator::animal());
+        $this->assertEquals('blue', WonderWordsGenerator::color());
+        $this->assertEquals('Alice', WonderWordsGenerator::name());
+        $this->assertEquals('badword', WonderWordsGenerator::profanity());
+        $this->assertEquals('api', WonderWordsGenerator::techTerm());
+        $this->assertEquals('box', WonderWordsGenerator::noun());
+        $this->assertEquals('eat', WonderWordsGenerator::verb());
+        $this->assertEquals('tall', WonderWordsGenerator::adjective());
+
+        $this->assertIsString(WonderWordsGenerator::firstName());
+        $this->assertIsString(WonderWordsGenerator::lastName());
     }
 }

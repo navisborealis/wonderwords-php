@@ -12,7 +12,14 @@
 namespace NavisBorealis\WonderwordsPhp;
 
 use NavisBorealis\WonderwordsPhp\Words\Adjective;
+use NavisBorealis\WonderwordsPhp\Words\Adverb;
+use NavisBorealis\WonderwordsPhp\Words\Animal;
+use NavisBorealis\WonderwordsPhp\Words\Color;
+use NavisBorealis\WonderwordsPhp\Words\Name;
 use NavisBorealis\WonderwordsPhp\Words\Noun;
+use NavisBorealis\WonderwordsPhp\Words\Profanity;
+use NavisBorealis\WonderwordsPhp\Words\TechTerm;
+use NavisBorealis\WonderwordsPhp\Words\Verb;
 
 class WonderWordsGenerator
 {
@@ -50,5 +57,60 @@ class WonderWordsGenerator
         $phrase = join($separator, $words);
 
         return $stringCaseFunction ? $stringCaseFunction($phrase) : ucwords($phrase, $separator);
+    }
+
+    public static function adjective(array $options = []): string
+    {
+        return Adjective::randomWord($options);
+    }
+
+    public static function adverb(array $options = []): string
+    {
+        return Adverb::randomWord($options);
+    }
+
+    public static function animal(array $options = []): string
+    {
+        return Animal::randomWord($options);
+    }
+
+    public static function color(array $options = []): string
+    {
+        return Color::randomWord($options);
+    }
+
+    public static function name(array $options = []): string
+    {
+        return Name::randomWord($options);
+    }
+
+    public static function firstName(array $options = []): string
+    {
+        return Name::firstName($options);
+    }
+
+    public static function lastName(array $options = []): string
+    {
+        return Name::lastName($options);
+    }
+
+    public static function noun(array $options = []): string
+    {
+        return Noun::randomWord($options);
+    }
+
+    public static function profanity(array $options = []): string
+    {
+        return Profanity::randomWord($options);
+    }
+
+    public static function techTerm(array $options = []): string
+    {
+        return TechTerm::randomWord($options);
+    }
+
+    public static function verb(array $options = []): string
+    {
+        return Verb::randomWord($options);
     }
 }

@@ -27,7 +27,7 @@ composer require navisborealis/wonderwords-php
 ## Usage
 
 Generate:
-- words - adjectives, nouns or verbs
+- words - adjectives, nouns, verbs, adverbs, animals, colors, names, and tech terms
 - phrases - 1+ adjective and 1+ noun, like `Blushing Inspection`
 - sentences - this feature is still in development
 
@@ -92,15 +92,31 @@ echo WonderWordsGenerator::phrase(' ', 1, 1, function ($phrase) {
 
 #### Generating words
 
-Generate one word per category (`Adjective`, `Noun`, `Verb`):
+Generate random words using the `WonderWordsGenerator` helper methods, or by interacting with the specific dictionary classes directly:
 
 ```php
-use NavisBorealis\WonderwordsPhp\Words\Adjective;
+use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
 
-echo Adjective::randomWord(); // Output: various
+echo WonderWordsGenerator::animal(); // Output: cheetah
+echo WonderWordsGenerator::color(); // Output: azure
+echo WonderWordsGenerator::firstName(); // Output: Alice
+echo WonderWordsGenerator::techTerm(); // Output: algorithm
 ```
 
-Or generate multiple words:
+#### Username Generation
+
+Combining specific categories like Colors and Animals is perfect for generating memorable, anonymous usernames or default avatars:
+
+```php
+use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
+
+$username = ucfirst(WonderWordsGenerator::color()) . ucfirst(WonderWordsGenerator::animal());
+echo $username; // Output: CrimsonPanther
+```
+
+#### Generating multiple words
+
+To generate an array of multiple words, use the underlying dictionary classes:
 
 ```php
 use NavisBorealis\WonderwordsPhp\Words\Adjective;
@@ -158,15 +174,15 @@ $words = Noun::randomWords(3, [
 
 ### Sentences
 
-Use `WonderWordsSentence` to generate sentences with random nouns and verbs.
+Use `WonderWordsSentence` to generate grammatically sound sentences containing randomly generated adjectives, nouns, adverbs, and verbs.
 
 ```php
 use NavisBorealis\WonderwordsPhp\WonderWordsSentence;
 
-// Example: "A dog eats an apple."
+// Example: "A fluffy cake quickly plays golf."
 echo WonderWordsSentence::simpleSentence(); 
 
-// Example: "The cat runs."
+// Example: "A fluffy cat quickly runs."
 echo WonderWordsSentence::bareBoneSentence();
 ```
 

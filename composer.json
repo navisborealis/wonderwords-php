@@ -14,7 +14,12 @@
     "profanity-filter",
     "fake-data",
     "testing",
-    "seeder"
+    "seeder",
+    "names",
+    "colors",
+    "animals",
+    "tech-terms",
+    "adverbs"
   ],
   "homepage": "https://github.com/navisborealis/wonderwords-php",
   "require": {

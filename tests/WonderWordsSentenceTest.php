@@ -22,6 +22,8 @@ class WonderWordsSentenceTest extends TestCase
     {
         Noun::setWordList(['cat', 'apple', 'dog', 'box']);
         Verb::setWordList(['run', 'play', 'eat', 'fly', 'fix']);
+        \NavisBorealis\WonderwordsPhp\Words\Adjective::setWordList(['fluffy']);
+        \NavisBorealis\WonderwordsPhp\Words\Adverb::setWordList(['quickly']);
     }
 
     public function testBareBoneSentence()
@@ -32,7 +34,7 @@ class WonderWordsSentenceTest extends TestCase
         $this->assertTrue(ctype_upper(substr($sentence, 0, 1)));
 
         $words = explode(' ', substr($sentence, 0, -1));
-        $this->assertCount(3, $words);
+        $this->assertCount(5, $words); // article adjective noun adverb verb
     }
 
     public function testSimpleSentence()
@@ -43,6 +45,6 @@ class WonderWordsSentenceTest extends TestCase
         $this->assertTrue(ctype_upper(substr($sentence, 0, 1)));
 
         $words = explode(' ', substr($sentence, 0, -1));
-        $this->assertCount(5, $words); // article noun verb article noun
+        $this->assertCount(8, $words); // article adjective noun adverb verb article adjective noun
     }
 }
