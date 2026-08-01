@@ -1,6 +1,6 @@
 {
   "name": "navisborealis/wonderwords-php",
-  "description": "Generate random words and sentences with ease in PHP.",
+  "description": "Generate random words, phrases, and grammatically correct sentences in PHP. Perfect for seeding databases with realistic test data.",
   "type": "library",
   "license": "MIT",
   "keywords": [
@@ -8,7 +8,13 @@
     "noun",
     "word",
     "generator",
-    "phrase"
+    "phrase",
+    "sentence",
+    "profanity",
+    "profanity-filter",
+    "fake-data",
+    "testing",
+    "seeder"
   ],
   "homepage": "https://github.com/navisborealis/wonderwords-php",
   "require": {
