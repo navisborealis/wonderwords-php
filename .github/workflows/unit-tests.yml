@@ -8,7 +8,7 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: true
       matrix:
@@ -32,7 +32,7 @@ jobs:
         with:
           timeout_minutes: 5
           max_attempts: 5
-          command: composer update --${{ matrix.stability }}
+          command: composer update --prefer-dist --no-interaction
 
       - name: Execute tests
         run: vendor/bin/phpunit --verbose
