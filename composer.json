@@ -32,7 +32,7 @@
   ],
   "minimum-stability": "dev",
   "require-dev": {
-    "php-coveralls/php-coveralls": "dev-master",
+    "php-coveralls/php-coveralls": "^2.0",
     "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6",
     "phpstan/phpstan": "^1.4",
     "friendsofphp/php-cs-fixer": "^3.1"
