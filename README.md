@@ -4,7 +4,18 @@
 
 # Wonderwords PHP
 
-Generate random words, phrases, and sentences in PHP.
+Generate random words, phrases, and grammatically correct sentences in PHP. Perfect for seeding databases with realistic test data, generating unique memorable usernames, or building randomized bots.
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Phrases](#phrases)
+  - [Words](#words)
+  - [Sentences](#sentences)
+  - [Profanity Filtering](#profanity-filtering)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
 
 ## Installation
 
@@ -145,7 +156,6 @@ $words = Noun::randomWords(3, [
 ]); // Output: ["blueberry", "butterfly", "balcony"]
 ```
 
-
 ### Sentences
 
 Use `WonderWordsSentence` to generate sentences with random nouns and verbs.
@@ -199,3 +209,13 @@ Wonderwords PHP ports the Python `wonderwordsmodule` and uses these projects:
   the [MIT License](https://github.com/samuelwilliams/PhraseGenerator/blob/master/LICENSE)
 - [word-generator](https://github.com/claudiodekker/word-generator/) under
   the [MIT license](https://github.com/claudiodekker/word-generator/blob/master/LICENSE.md)
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details on running the test suite and code style fixer.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
