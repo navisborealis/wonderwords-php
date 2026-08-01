@@ -54,4 +54,28 @@ class WonderWordsGeneratorTest extends BaseTestCase
         $phrase = WonderWordsGenerator::phrase(' ', 2, 3);
         $this->assertCount(5, explode(' ', $phrase));
     }
+
+    public function testZeroAdjectives()
+    {
+        Noun::setWordList(['mug']);
+        $this->assertEquals('Mug', WonderWordsGenerator::phrase(' ', 0, 1));
+    }
+
+    public function testZeroNouns()
+    {
+        Adjective::setWordList(['funny']);
+        $this->assertEquals('Funny', WonderWordsGenerator::phrase(' ', 1, 0));
+    }
+
+    public function testZeroWordsThrowsException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        WonderWordsGenerator::phrase(' ', 0, 0);
+    }
+
+    public function testNegativeWordsThrowsException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        WonderWordsGenerator::phrase(' ', -1, 1);
+    }
 }

@@ -46,6 +46,8 @@ abstract class Words
 
         if ($num < 1) {
             throw new \InvalidArgumentException('Number of words must be positive');
+        } elseif ($num > count(static::$words)) {
+            throw new \InvalidArgumentException('Cannot request more words than are available in the word list');
         } elseif (1 == $num) {
             return [static::randomWord()];
         }

@@ -28,7 +28,16 @@ class WonderWordsGenerator
         int $numNouns = 1,
         ?callable $stringCaseFunction = null
     ): string {
-        $words = array_merge(Adjective::randomWords($numAdjectives), Noun::randomWords($numNouns));
+        if ($numAdjectives < 0 || $numNouns < 0) {
+            throw new \InvalidArgumentException('Number of adjectives and nouns must be non-negative');
+        }
+        if ($numAdjectives === 0 && $numNouns === 0) {
+            throw new \InvalidArgumentException('At least one word must be generated');
+        }
+
+        $adjectives = $numAdjectives > 0 ? Adjective::randomWords($numAdjectives) : [];
+        $nouns = $numNouns > 0 ? Noun::randomWords($numNouns) : [];
+        $words = array_merge($adjectives, $nouns);
 
         $phrase = join($separator, $words);
 

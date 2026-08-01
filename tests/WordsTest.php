@@ -76,4 +76,14 @@ class WordsTest extends BaseTestCase
         $this->expectException(\InvalidArgumentException::class);
         $wordsInstance::randomWords(-5);
     }
+
+    /**
+     * @dataProvider wordsClassProvider
+     */
+    public function testRequestingMoreWordsThanAvailableThrowsException(Words $wordsInstance)
+    {
+        $wordsInstance::setWordList(['one', 'two']);
+        $this->expectException(\InvalidArgumentException::class);
+        $wordsInstance::randomWords(3);
+    }
 }
