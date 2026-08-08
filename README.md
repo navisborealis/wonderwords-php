@@ -8,7 +8,7 @@
 
 # Wonderwords PHP
 
-Generate random words, phrases, and grammatically correct sentences in PHP. Perfect for seeding databases with realistic test data, generating unique memorable usernames, or building randomized bots.
+Generate random words, phrases, and grammatically correct english sentences in PHP. Perfect for seeding databases with realistic test data, generating memorable usernames, providing default names or URL slugs for new entities (projects, workspaces, groups), or building randomized bots.
 
 ## Table of Contents
 - [Quick Start](#quick-start)
@@ -38,11 +38,14 @@ use NavisBorealis\WonderwordsPhp\WonderWordsSentence;
 // 1. Generate memorable usernames (e.g., AzureCheetah)
 $username = ucfirst(WonderWordsGenerator::color()) . ucfirst(WonderWordsGenerator::animal());
 
-// 2. Generate grammatically correct sentences (e.g., "A fluffy cake quickly plays golf.")
+// 2. Provide default names for new entities like projects or workspaces (e.g., "Blushing Inspection Project")
+$projectName = WonderWordsGenerator::phrase() . ' Project';
+
+// 3. Generate grammatically correct sentences (e.g., "A fluffy cake quickly plays golf.")
 $sentence = WonderWordsSentence::simpleSentence();
 
-// 3. Generate a phrase (e.g., "Blushing Inspection")
-$phrase = WonderWordsGenerator::phrase();
+// 4. Create random URL slugs (e.g., "blushing-inspection")
+$slug = WonderWordsGenerator::phrase('-', 1, 1, 'strtolower');
 ```
 
 ## Usage
