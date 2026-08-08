@@ -29,7 +29,7 @@ composer require navisborealis/wonderwords-php
 Generate:
 - words - adjectives, nouns, verbs, adverbs, animals, colors, names, and tech terms
 - phrases - 1+ adjective and 1+ noun, like `Blushing Inspection`
-- sentences - this feature is still in development
+- sentences - grammatically correct simple and bare-bone sentences
 
 ### Phrases
 
