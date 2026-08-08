@@ -1,12 +1,17 @@
 [![Github Tests Action Status](https://github.com/navisborealis/wonderwords-php/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/navisborealis/wonderwords-php/actions/workflows/unit-tests.yml)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
 [![Total Downloads](https://img.shields.io/packagist/dt/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
+[![PHP Version Require](https://img.shields.io/packagist/php-v/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
+[![License](https://img.shields.io/packagist/l/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
+[![Coverage Status](https://coveralls.io/repos/github/navisborealis/wonderwords-php/badge.svg?branch=master)](https://coveralls.io/github/navisborealis/wonderwords-php?branch=master)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 # Wonderwords PHP
 
 Generate random words, phrases, and grammatically correct sentences in PHP. Perfect for seeding databases with realistic test data, generating unique memorable usernames, or building randomized bots.
 
 ## Table of Contents
+- [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Phrases](#phrases)
@@ -22,6 +27,22 @@ Generate random words, phrases, and grammatically correct sentences in PHP. Perf
 To install the package, run the following command:
 ```bash 
 composer require navisborealis/wonderwords-php
+```
+
+## Quick Start
+
+```php
+use NavisBorealis\WonderwordsPhp\WonderWordsGenerator;
+use NavisBorealis\WonderwordsPhp\WonderWordsSentence;
+
+// 1. Generate memorable usernames (e.g., AzureCheetah)
+$username = ucfirst(WonderWordsGenerator::color()) . ucfirst(WonderWordsGenerator::animal());
+
+// 2. Generate grammatically correct sentences (e.g., "A fluffy cake quickly plays golf.")
+$sentence = WonderWordsSentence::simpleSentence();
+
+// 3. Generate a phrase (e.g., "Blushing Inspection")
+$phrase = WonderWordsGenerator::phrase();
 ```
 
 ## Usage
@@ -41,11 +62,12 @@ The phrase structure is `adjective noun`. You can change:
 To use custom words, see [Changing default word list](#changing-default-word-list).
 
 ```php
-phrase(
-        string $separator = ' ',
-        int $numAdjectives = 1,
-        int $numNouns = 1,
-        callable $stringCaseFunction = null)
+public static function phrase(
+    string $separator = ' ',
+    int $numAdjectives = 1,
+    int $numNouns = 1,
+    ?callable $stringCaseFunction = null
+): string
 ```
 
 #### Two-word phrase 
