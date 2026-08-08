@@ -23,7 +23,7 @@
   ],
   "homepage": "https://github.com/navisborealis/wonderwords-php",
   "require": {
-    "php": "^7.1 || ^8.0"
+    "php": "^7.4 || ^8.0"
   },
   "autoload": {
     "psr-4": {

@@ -3,8 +3,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
 [![PHP Version Require](https://img.shields.io/packagist/php-v/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
 [![License](https://img.shields.io/packagist/l/navisborealis/wonderwords-php.svg)](https://packagist.org/packages/navisborealis/wonderwords-php)
-[![Coverage Status](https://coveralls.io/repos/github/navisborealis/wonderwords-php/badge.svg?branch=master)](https://coveralls.io/github/navisborealis/wonderwords-php?branch=master)
-[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 # Wonderwords PHP
 
