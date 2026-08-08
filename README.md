@@ -18,6 +18,7 @@ Generate random words, phrases, and grammatically correct english sentences in P
   - [Words](#words)
   - [Sentences](#sentences)
   - [Profanity Filtering](#profanity-filtering)
+  - [FakerPHP Integration](#fakerphp-integration)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
@@ -235,6 +236,43 @@ $isBad = Profanity::isProfanity("piss"); // true
 $cleanArray = Profanity::filterProfanity(['apple', 'orange', 'piss']);
 // Output: ['apple', 'orange']
 ```
+
+### FakerPHP Integration
+
+If you use [FakerPHP](https://github.com/FakerPHP/Faker), you can register WonderWords as a custom provider to generate words, phrases, and sentences directly from your `$faker` instance.
+
+```php
+use Faker\Factory;
+use NavisBorealis\WonderwordsPhp\Faker\WonderWordsProvider;
+
+$faker = Factory::create();
+$faker->addProvider(new WonderWordsProvider($faker));
+
+// Generate words
+echo $faker->wonderWordsAdjective(); // e.g., "blushing"
+echo $faker->wonderWordsNoun();      // e.g., "inspection"
+echo $faker->wonderWordsColor();     // e.g., "azure"
+
+// Generate phrases and sentences
+echo $faker->wonderWordsPhrase();           // e.g., "Blushing Inspection"
+echo $faker->wonderWordsSimpleSentence();   // e.g., "A fluffy cake quickly plays golf."
+```
+
+Available methods:
+- `wonderWordsAdjective(array $options = [])`
+- `wonderWordsAdverb(array $options = [])`
+- `wonderWordsAnimal(array $options = [])`
+- `wonderWordsColor(array $options = [])`
+- `wonderWordsName(array $options = [])`
+- `wonderWordsFirstName(array $options = [])`
+- `wonderWordsLastName(array $options = [])`
+- `wonderWordsNoun(array $options = [])`
+- `wonderWordsProfanity(array $options = [])`
+- `wonderWordsTechTerm(array $options = [])`
+- `wonderWordsVerb(array $options = [])`
+- `wonderWordsPhrase(string $separator = ' ', int $numAdjectives = 1, int $numNouns = 1, ?callable $stringCaseFunction = null)`
+- `wonderWordsBareBoneSentence(array $nounOptions = [], array $verbOptions = [], array $adjectiveOptions = [], array $adverbOptions = [])`
+- `wonderWordsSimpleSentence(array $nounOptions = [], array $verbOptions = [], array $adjectiveOptions = [], array $adverbOptions = [])`
 
 ## Credits
 
